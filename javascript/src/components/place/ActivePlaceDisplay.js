@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 
 const ActivePlaceDisplay = ({ place }) => {
 
-    const { placeID, accountID, name, shiftStart, active, operators } = place;
+    const { placeID, accountID, name, parsedShiftStartTime, shiftStart, active, operators, GMT } = place;
     const classes = useStyles();
 
     return (
@@ -36,10 +36,12 @@ const ActivePlaceDisplay = ({ place }) => {
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                         Place: {placeID}<br />
-                            shiftStart: {shiftStart}<br />
-                            active: {String(active)}<br />
-                            operators: {operators}<br />
-                            accountID: {accountID}<br />
+                        shiftStart: {shiftStart}<br />
+                        GMT: {GMT}<br />
+                        active: {String(active)}<br />
+                        operators: {operators}<br />
+                        accountID: {accountID}<br />
+                        Parsed Shift Time: {parsedShiftStartTime.format()}
                     </Typography>
                 </CardContent>
             </Card>

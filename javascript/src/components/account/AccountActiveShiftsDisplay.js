@@ -46,7 +46,7 @@ const AccountActiveShiftsDisplay = ({ relevantPlaces, accounts }) => {
                 {accountsInCorrectTime.map(account => {
                     return (
                         <Grid item xs={12} sm={6} md={3}>
-                            <AccountActiveShiftDisplay account={account} />
+                            <AccountActiveShiftDisplay account={account} />                            
                         </Grid>
                     )
                 })}
