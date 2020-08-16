@@ -22,12 +22,11 @@ class Place {
     }
 
 
-    get parsedShiftStartTime(){
-        var test = moment(this.shiftStart, 'hhmm').utcOffset(this.GMT);        
-
-        debugger;
-
-        return test;
+    get parsedShiftStartTime() {
+        return moment().utcOffset(this.GMT).set({
+            hours: this.shiftStart?.substring(0, 2),
+            minutes: this.shiftStart?.substring(2, 2),
+        })
     }
 }
 
