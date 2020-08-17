@@ -14,23 +14,13 @@ namespace TrafficLights
     {
         public enum Trigger { Button1, Button2 }
         public enum CrossingState { LightACrossing, LightBCrossing }
-
-        public string State {
-            get {
-                Console.WriteLine($"Light A: {_crossingLights?.LightA?.State}");
-                Console.WriteLine($"Light B: {_crossingLights?.LightB?.State}");
-
-                return null;
-            }
-        }
-
         private readonly StateMachine<CrossingState, Trigger> _machine;
-        private readonly CrossingLights _crossingLights;
+        public readonly CrossingLights State;
 
         public Crossing()
         {
             _machine = new StateMachine<CrossingState, Trigger>(CrossingState.LightBCrossing);
-            _crossingLights = new CrossingLights();
+            State = new CrossingLights();
 
             _machine.Configure(CrossingState.LightACrossing)
                 .OnEntry(t => OnStartLightACrossing())
@@ -49,10 +39,10 @@ namespace TrafficLights
         /// </summary>
         void OnStartLightACrossing()
         {
-            _crossingLights.LightB.WarnTraffic();
+            State.LightB.WarnTraffic();
             Console.WriteLine(State);
-            _crossingLights.LightB.StopTraffic();
-            _crossingLights.LightA.PermitTraffic();
+            State.LightB.StopTraffic();
+            State.LightA.PermitTraffic();
             Console.WriteLine(State);
         }
 
@@ -62,11 +52,11 @@ namespace TrafficLights
         /// </summary>
         void OnStartLightBCrossing()
         {
-            _crossingLights.LightA.WarnTraffic();
+            State.LightA.WarnTraffic();
             Console.WriteLine(State);
 
-            _crossingLights.LightA.StopTraffic();
-            _crossingLights.LightB.PermitTraffic();
+            State.LightA.StopTraffic();
+            State.LightB.PermitTraffic();
             Console.WriteLine(State);
         }
 

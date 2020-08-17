@@ -14,5 +14,10 @@ namespace TrafficLights
             LightA = new TrafficLight(TrafficLight.TrafficLightState.Red, "Light A");
             LightB = new TrafficLight(TrafficLight.TrafficLightState.Green, "Light B");
         }
+
+        public override string ToString()
+        {
+            return $"Light A: { LightA?.State}{Environment.NewLine}Light B: {LightB?.State}";
+        }
     }
 }
