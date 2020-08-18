@@ -1,0 +1,17 @@
+{
+  "name": "raw-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine-node spec",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jasmine-node": "^3.0.0",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31"
+  }
+}
